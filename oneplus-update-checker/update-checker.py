@@ -6,7 +6,7 @@ from re import split
 from datetime import datetime, timedelta
 
 
-last_updates_file = path.realpath(__file__)[:-17] + 'last_updates.txt'
+last_updates_file = path.realpath(__file__)[:-17] + 'last-updates.txt'
 
 content = request.urlopen("https://downloads.oneplus.com/devices/oneplus-5t/").read()
 
@@ -32,7 +32,7 @@ if len(open(last_updates_file).readlines()):
         if file_lines[0].split()[0] == dates[0]:
             print(bold_text + red_color + 'NO UPDATES' + end_color)
         else:
-            print(bold_text + green_color + 'AVAILABLE UPDATE - {}'.format(versions[0]) + end_color)
+            print(bold_text + green_color + 'AVAILABLE UPDATE' + end_color)
             is_changed = True
         print('---------------------------------------------------')
 else:
@@ -48,6 +48,6 @@ if is_changed:
 
 with open(last_updates_file) as file:
     for line in file.readlines():
-        if datetime.now() - timedelta(days=5) < datetime.strptime(line.split()[0], '%Y-%m-%d'):
+        if datetime.now() - timedelta(days=50) < datetime.strptime(line.split()[0], '%Y-%m-%d'):
             print(green_color, end='')
         print(line[:-1] + end_color)
