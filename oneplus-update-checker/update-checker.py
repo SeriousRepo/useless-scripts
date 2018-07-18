@@ -48,6 +48,6 @@ if is_changed:
 
 with open(last_updates_file) as file:
     for line in file.readlines():
-        if datetime.now() - timedelta(days=50) < datetime.strptime(line.split()[0], '%Y-%m-%d'):
+        if datetime.now() - timedelta(days=3) < datetime.strptime(line.split()[0], '%Y-%m-%d'):
             print(green_color, end='')
         print(line[:-1] + end_color)
